@@ -10,6 +10,7 @@ import Pages from "./Data/Pages";
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 function App() {
+  document.body.className = "dark default";
   const location = useLocation();
   return (
     <>

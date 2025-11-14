@@ -311,7 +311,7 @@ const Content = {
   pagesContents: {
     home: {
       hero: {
-        title: "Products & Upgrades",
+        title: "ProMa",
         subtitle: "Simple & Powerful",
         image: {
           src: null,
@@ -319,7 +319,7 @@ const Content = {
         },
       },
       info: {
-        title: "What is Products & Upgrades?",
+        title: "What is ProMa?",
         subtitles: [
           "A simple and powerful web application that allows you to manage products and upgrades.",
           "Built with ❤️ Specially for Product Managers.",

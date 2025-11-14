@@ -1,38 +1,133 @@
-.App {
-  text-align: center;
+:root {
+  --primary-value: 200;
+  --primary-o-color: hsl(var(--primary-value), 100%, 50%);
+  --primary-l-color: hsl(var(--primary-value), 100%, 90%);
+  --primary-o-color: hsl(var(--primary-value), 100%, 30%);
+  --primary-shadow-color: hsla(var(--primary-value), 100%, 50%, 0);
+  --primary-shadow-color-hovered: hsla(var(--primary-value), 100%, 50%, 0.5);
+  /* red */
+  --red-o: hsl(0, 100%, 50%);
+  --red-l: hsl(0, 100%, 90%);
+  --red-d: hsl(0, 100%, 30%);
+  /* orange */
+  --orange-o: hsl(30, 100%, 50%);
+  --orange-l: hsl(30, 100%, 90%);
+  --orange-d: hsl(30, 100%, 30%);
+  /* yellow */
+  --yellow-o: hsl(60, 100%, 50%);
+  --yellow-l: hsl(60, 100%, 90%);
+  --yellow-d: hsl(60, 100%, 30%);
+  /* green */
+  --green-o: hsl(120, 100%, 50%);
+  --green-l: hsl(120, 100%, 90%);
+  --green-d: hsl(120, 100%, 30%);
+  /* blue */
+  --primary-o: hsl(200, 100%, 50%);
+  --primary-l: hsl(200, 100%, 90%);
+  --primary-d: hsl(200, 100%, 30%);
+  /* purple */
+  --purple-o: hsl(270, 100%, 50%);
+  --purple-l: hsl(270, 100%, 90%);
+  --purple-d: hsl(270, 100%, 30%);
+  /* pink */
+  --pink-o: hsl(330, 100%, 50%);
+  --pink-l: hsl(330, 100%, 90%);
+  --pink-d: hsl(330, 100%, 30%);
+  /* lights */
+  --light-o: hsl(0, 0%, 90%);
+  --light-l: hsl(0, 0%, 100%);
+  --light-d: hsl(0, 0%, 80%);
+  /* dark */
+  --dark-o: hsl(0, 0%, 5%);
+  --dark-l: hsl(0, 0%, 15%);
+  --dark-d: hsl(0, 0%, 0%);
+  /* muted */
+  --muted-o: hsl(0, 0%, 50%);
+  --muted-l: hsl(0, 0%, 90%);
+  --muted-d: hsl(0, 0%, 30%);
+  /* speed - duration */
+  --speed-fast: 0.1s;
+  --speed-normal: 0.5s;
+  --speed-slow: 1s;
+  /* speed - easing */
+  --speed-good: "linear";
+  --speed-okay: "ease-in";
+  --speed-pro: "ease-in-out";
+  /* z-index */
+  --z-index-header: 1;
+  --z-index-main: 2;
+  --z-index-footer: 3;
+  /* fonts */
+  --font-classic: "Times New Roman", Times, serif;
+  --font-code-consolas: "Consolas", monospace;
+  --font-pro: "Lexend Deca", sans-serif;
+  /* font - weight */
+  --font-weight-thin: 100;
+  --font-weight-light: 300;
+  --font-weight-regular: 300;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: var(--speed-fast);
+  font-family: var(--font-pro);
+  font-weight: var(--font-weight-regular);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body,
+#root {
   display: flex;
   flex-direction: column;
+  justify-content: start;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100svh;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
-}
+body {
+  overflow-x: hidden;
+  background-color: var(--bg);
+  color: var(--fg);
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  &.light {
+    --bg: var(--light-o);
+    --fg: var(--dark-o);
   }
-  to {
-    transform: rotate(360deg);
+
+  &.dark {
+    --bg: var(--dark-o);
+    --fg: var(--light-o);
+  }
+
+  &::-webkit-scrollbar {
+    height: 14px;
+    width: 14px;
+    background-color: var(--bg);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--primary-value);
+  }
+}
+
+.link {
+  & a {
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    background-color: var(--this-bg);
+    color: var(--this-fg);
+    box-shadow: 0 0.5rem 1rem var(--primary-shadow-color);
+    &:hover,
+    &:focus-visible {
+      background-color: var(--this-bg-hover);
+      color: var(--this-fg-hover);
+      box-shadow: 0 0rem 5rem var(--primary-shadow-color-hovered);
+    }
   }
 }

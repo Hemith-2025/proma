@@ -1,0 +1,119 @@
+main.home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  height: fit-content;
+  width: 100%;
+  & section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+    width: 100%;
+
+    & > .wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: fit-content;
+      width: 100%;
+    }
+
+    &.hero-section {
+      height: 100vh;
+      overflow: hidden;
+
+      & > .wrapper {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        & > .decor {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translate(-50%, 50%) scale(0.5);
+          height: 80vh;
+          width: 80%;
+          border-radius: 50%;
+          background-color: var(--primary-o-color);
+          filter: blur(200px);
+          animation-name: animate-hero-decor;
+          animation-timing-function: ease-in-out;
+          animation-fill-mode: forwards;
+          animation-duration: 5s;
+        }
+        & > .overlay {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: fit-content;
+          width: fit-content;
+
+          & > .title {
+            font-size: 5rem;
+          }
+          & > .subtitle {
+            font-size: 2rem;
+            color: var(--muted-o);
+            transition: 5s;
+          }
+        }
+      }
+    }
+    &.info-section {
+        padding: 2rem;
+      & > .wrapper {
+        justify-content: start;
+        align-items: start;
+        gap: 1rem;
+        & .title {
+          font-size: 3rem;
+        }
+        & .subtitles {
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          align-items: start;
+          gap: 0.5rem;
+          height: fit-content;
+          width: fit-content;
+          background-color: var(--dark-l);
+          padding: 1rem;
+          border-radius: 1rem;
+          overflow: hidden;
+
+          & > .subtitle {
+            font-size: 1.5rem;
+          }
+        }
+        & .link {
+          display: flex;
+          justify-content: start;
+          align-items: center;
+          height: fit-content;
+          width: fit-content;
+
+          & a {
+            --this-bg: var(--primary-l-color);
+            --this-fg: var(--primary-o-color);
+            --this-bg-hover: var(--primary-o-color);
+            --this-fg-hover: var(--primary-d-color);
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes animate-hero-decor {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

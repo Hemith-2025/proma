@@ -11,17 +11,73 @@ import UseWrapper from "../../Components/Common/UseWrapper";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
+  useEffect(() => {
+    gsap.fromTo(".hero-section .wrapper .decor", { scale: 0 }, { scale: 1 });
+    gsap.fromTo(
+      ".hero-section .wrapper .overlay .title p",
+      { y: 0, opacity: 1, scale: 1 },
+      {
+        y: 200,
+        opacity: 0,
+        scale: 5,
+        filter: "blur(30px)",
+        scrollTrigger: {
+          trigger: ".hero-section",
+          start: "50% center",
+          end: "bottom center",
+          scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      ".hero-section .wrapper .overlay .subtitle p",
+      { y: 0, opacity: 1, scale: 1 },
+      {
+        y: 400,
+        opacity: 0,
+        scale: 5,
+        filter: "blur(30px)",
+        scrollTrigger: {
+          trigger: ".hero-section",
+          start: "50% center",
+          end: "bottom center",
+          scrub: true,
+        },
+      }
+    );
+
+    gsap.utils.toArray(".info-subtitle").forEach((subtitle) => {
+      gsap.fromTo(
+        subtitle,
+        { opacity: 0, y: 50, filter: "blur(30px)" },
+        {
+          opacity: 1,
+          y: 0,
+          filter: "blur(0px)",
+          scrollTrigger: {
+            trigger: subtitle,
+            start: "top center",
+            end: "bottom center",
+            scrub: false,
+            stagger: 1,
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+
+    return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  }, []);
   function HeroSection() {
     const HeroContent = Content.pagesContents.home.hero;
     return UseWrapper(
       <>
-        <div className="image-wrapper">
-          <img src={HeroContent.image.src} alt={HeroContent.image.alt} />
-        </div>
+        <div className="decor"></div>
         <div className="overlay">
           <div className="title">
             <p>{HeroContent.title}</p>
@@ -42,7 +98,7 @@ export default function Home() {
         </div>
         <div className="subtitles">
           {InfoContent.subtitles.map((subtitle, index) => (
-            <div key={index} className="subtitle">
+            <div key={index} className="info-subtitle">
               <p>{subtitle}</p>
             </div>
           ))}
@@ -51,6 +107,23 @@ export default function Home() {
           <NavLink to={InfoContent.link.slug}>
             <p>{InfoContent.link.label}</p>
           </NavLink>
+        </div>
+      </>
+    );
+  }
+  function FeaturesSection() {
+    const FeaturesContent = Content.pagesContents.home.features;
+    return UseWrapper(
+      <>
+        <div className="title">
+          <p>{FeaturesContent.title}</p>
+        </div>
+        <div className="subtitles">
+          {FeaturesContent.subtitles.map((subtitle, index) => (
+            <div key={index} className="subtitle">
+              <p>{subtitle}</p>
+            </div>
+          ))}
         </div>
       </>
     );
@@ -85,6 +158,10 @@ export default function Home() {
     {
       className: "info-section",
       wrapper: <InfoSection />,
+    },
+    {
+      className: "features-section",
+      wrapper: <FeaturesSection />,
     },
     {
       className: "reachus-section",

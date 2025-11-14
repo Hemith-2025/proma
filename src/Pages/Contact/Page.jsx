@@ -7,7 +7,6 @@ import Content from "../../Data/Content";
 // Components
 import UseWrapper from "../../Components/Common/UseWrapper";
 import ContactForm from "../../Components/Common/ContactForm";
-import ContactRESTAPIForm from "../../Components/Common/EmailRESTAPI";
 
 // Dependencies
 import gsap from "gsap";
@@ -61,7 +60,6 @@ export default function Contact() {
     return UseWrapper(
         <>
             <ContactForm />
-            <ContactRESTAPIForm />
         </>
     )
   }
