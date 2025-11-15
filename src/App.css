@@ -156,7 +156,6 @@ a {
     background-color: var(--primary-o-color);
     box-shadow: 0 0 1rem var(--primary-o-color);
     animation: animte-scroll-indicator linear;
-    animation-range: entry 0% cover 100%;
     animation-timeline: scroll();
   }
 }
