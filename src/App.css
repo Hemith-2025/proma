@@ -2,7 +2,7 @@
   --primary-value: 200;
   --primary-o-color: hsl(var(--primary-value), 100%, 50%);
   --primary-l-color: hsl(var(--primary-value), 100%, 90%);
-  --primary-o-color: hsl(var(--primary-value), 100%, 30%);
+  --primary-d-color: hsl(var(--primary-value), 100%, 30%);
   --primary-shadow-color: hsla(var(--primary-value), 100%, 50%, 0);
   --primary-shadow-color-hovered: hsla(var(--primary-value), 100%, 50%, 0.5);
   /* red */
@@ -70,7 +70,9 @@
   --font-weight-black: 900;
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -114,8 +116,6 @@ body {
     background-color: var(--primary-value);
   }
 }
-
-.link {
   & a {
     text-decoration: none;
     padding: 1rem 2rem;
@@ -130,4 +130,3 @@ body {
       box-shadow: 0 0rem 5rem var(--primary-shadow-color-hovered);
     }
   }
-}

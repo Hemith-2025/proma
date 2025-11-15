@@ -17,6 +17,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   useEffect(() => {
+    gsap.fromTo(
+      ".hero-section",
+      { borderRadius: "0rem", scale: 1 },
+      {
+        borderRadius: "2rem",
+        scale: 0.9,
+        scrollTrigger: {
+          trigger: ".hero-section",
+          start: "bottom 95%",
+          end: "bottom 5%",
+          scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      ".hero-section .wrapper .overlay",
+      { opacity: 0, scale: 0.8 },
+      { opacity: 1, scale: 1, duration: 5 }
+    );
     gsap.fromTo(".hero-section .wrapper .decor", { scale: 0 }, { scale: 1 });
     gsap.fromTo(
       ".hero-section .wrapper .overlay .title p",
@@ -28,7 +47,7 @@ export default function Home() {
         filter: "blur(30px)",
         scrollTrigger: {
           trigger: ".hero-section",
-          start: "50% center",
+          start: "60% center",
           end: "bottom center",
           scrub: true,
         },
@@ -44,32 +63,89 @@ export default function Home() {
         filter: "blur(30px)",
         scrollTrigger: {
           trigger: ".hero-section",
-          start: "50% center",
+          start: "60% center",
           end: "bottom center",
           scrub: true,
         },
       }
     );
-
-    gsap.utils.toArray(".info-subtitle").forEach((subtitle) => {
-      gsap.fromTo(
-        subtitle,
-        { opacity: 0, y: 50, filter: "blur(30px)" },
-        {
-          opacity: 1,
-          y: 0,
-          filter: "blur(0px)",
-          scrollTrigger: {
-            trigger: subtitle,
-            start: "top center",
-            end: "bottom center",
-            scrub: false,
-            stagger: 1,
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    });
+    gsap.fromTo(
+      gsap.utils.toArray(".info-subtitle"),
+      { opacity: 0, y: 50, filter: "blur(30px)" },
+      {
+        opacity: 1,
+        y: 0,
+        filter: "blur(0px)",
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: ".info-subtitle",
+          start: "top center",
+          end: "bottom center",
+          scrub: false,
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+    gsap.fromTo(
+      ".info-section .wrapper .title",
+      {
+        filter: "blur(30px)",
+        opacity: 0,
+        x: -200,
+      },
+      {
+        filter: "blur(0px)",
+        opacity: 1,
+        x: 0,
+        scrollTrigger: {
+          trigger: ".info-section",
+          start: "top center",
+          end: "bottom center",
+          scrub: false,
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+    gsap.fromTo(
+      ".info-section .wrapper .subtitles",
+      {
+        filter: "blur(30px)",
+        opacity: 0,
+        x: -100,
+      },
+      {
+        filter: "blur(0px)",
+        opacity: 1,
+        x: 0,
+        scrollTrigger: {
+          trigger: ".info-section",
+          start: "top center",
+          end: "bottom center",
+          scrub: false,
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
+    gsap.fromTo(
+      ".info-section .wrapper .link",
+      {
+        filter: "blur(30px)",
+        opacity: 0,
+        x: -50,
+      },
+      {
+        filter: "blur(0px)",
+        opacity: 1,
+        x: 0,
+        scrollTrigger: {
+          trigger: ".info-section",
+          start: "top center",
+          end: "bottom center",
+          scrub: false,
+          toggleActions: "play none none reverse",
+        },
+      }
+    );
 
     return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
@@ -104,9 +180,7 @@ export default function Home() {
           ))}
         </div>
         <div className="link">
-          <NavLink to={InfoContent.link.slug}>
-            <p>{InfoContent.link.label}</p>
-          </NavLink>
+          <NavLink to={InfoContent.link.slug}>{InfoContent.link.label}</NavLink>
         </div>
       </>
     );
@@ -121,7 +195,10 @@ export default function Home() {
         <div className="subtitles">
           {FeaturesContent.subtitles.map((subtitle, index) => (
             <div key={index} className="subtitle">
-              <p>{subtitle}</p>
+              <div className="icon">{subtitle.icon}</div>
+              <div className="label">
+                <p>{subtitle.label}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -135,17 +212,19 @@ export default function Home() {
         <div className="title">
           <p>{ReachUsContent.title}</p>
         </div>
-        <div className="subtitles">
-          {ReachUsContent.subtitles.map((subtitle, index) => (
-            <div key={index} className="subtitle">
-              <p>{subtitle}</p>
-            </div>
-          ))}
-        </div>
-        <div className="link">
-          <NavLink to={ReachUsContent.link.slug}>
-            <p>{ReachUsContent.link.label}</p>
-          </NavLink>
+        <div className="copy">
+          <div className="subtitles">
+            {ReachUsContent.subtitles.map((subtitle, index) => (
+              <div key={index} className="subtitle">
+                <p>{subtitle}</p>
+              </div>
+            ))}
+          </div>
+          <div className="link">
+            <NavLink to={ReachUsContent.link.slug}>
+              {ReachUsContent.link.label}
+            </NavLink>
+          </div>
         </div>
       </>
     );

@@ -1,3 +1,14 @@
+import {
+  Zap,
+  ChartLine,
+  Lightbulb,
+  SunMoon,
+  UserCheck,
+  Lock,
+  MousePointer,
+  Sparkles,
+} from "lucide-react";
+
 const Content = {
   // Product Specifications
   specs: {
@@ -341,14 +352,38 @@ const Content = {
       features: {
         title: "Why so Special?",
         subtitles: [
-          "Simple and Powerful",
-          "Efficient Tracking and Management",
-          "Intuitive User Interface",
-          "Light and Dark Modes",
-          "No Account Required",
-          "Secured and Safe",
-          "Just typing and clicks",
-          "Animated UI interactions",
+          {
+            icon: <Zap />,
+            label: "Simple and Powerful",
+          },
+          {
+            icon: <ChartLine />,
+            label: "Efficient Tracking and Management",
+          },
+          {
+            icon: <Lightbulb />,
+            label: "Intuitive User Interface",
+          },
+          {
+            icon: <SunMoon />,
+            label: "Light and Dark Modes",
+          },
+          {
+            icon: <UserCheck />,
+            label: "No Account Required",
+          },
+          {
+            icon: <Lock />,
+            label: "Secured and Safe",
+          },
+          {
+            icon: <MousePointer />,
+            label: "Just typing and clicks",
+          },
+          {
+            icon: <Sparkles />,
+            label: "Animated UI interactions",
+          },
         ],
       },
       reachus: {
