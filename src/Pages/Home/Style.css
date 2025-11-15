@@ -174,6 +174,18 @@ main.home-page {
             overflow: hidden;
             border: 2px solid;
             border-color: var(--dark-o);
+            filter: blur(30px);
+            scale: 0.8;
+            transition: var(--speed-normal);
+            animation: none;
+            
+
+            @media (max-width: 900px) {
+              width: 100%;
+              animation: animate-subtitles linear;
+              animation-range: entry 0% cover 100%;
+              animation-timeline: view();
+            }
 
             &::before {
               content: "";
@@ -189,8 +201,9 @@ main.home-page {
               filter: blur(100px);
               opacity: 0;
               pointer-events: none;
+              transition: var(--speed-normal);
             }
-
+            
             &::after {
               content: "";
               position: absolute;
@@ -202,6 +215,7 @@ main.home-page {
               background-color: var(--dark-l);
               opacity: 1;
               z-index: -2;
+              transition: var(--speed-normal);
             }
 
             &:hover,
@@ -217,6 +231,10 @@ main.home-page {
                 scale: 2;
                 filter: drop-shadow(0 0 10px var(--primary-l-color));
               }
+            }
+            & .label {
+              font-size: 1.5rem;
+              text-align: center;
             }
           }
         }
@@ -245,6 +263,13 @@ main.home-page {
           height: fit-content;
           width: 100%;
 
+          @media (max-width: 900px) {
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            gap: 2rem;
+          }
+
           & .subtitles {
             display: flex;
             flex-direction: column;
@@ -255,6 +280,15 @@ main.home-page {
 
             & .subtitle {
               font-size: 1.5rem;
+            }
+          }
+
+          & .link {
+            & a {
+              --this-bg: var(--primary-l-color);
+              --this-fg: var(--primary-o-color);
+              --this-bg-hover: var(--primary-o-color);
+              --this-fg-hover: var(--primary-l-color);
             }
           }
         }
@@ -269,5 +303,15 @@ main.home-page {
   }
   100% {
     opacity: 1;
+  }
+}
+@keyframes animate-subtitles {
+  0%, 100% {
+    filter: blur(30px);
+    scale: 0.8;
+  }
+  75%, 25% {
+    filter: blur(0px);
+    scale: 1;
   }
 }

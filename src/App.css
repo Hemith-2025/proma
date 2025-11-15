@@ -115,18 +115,53 @@ body {
   &::-webkit-scrollbar-thumb {
     background-color: var(--primary-value);
   }
-}
-  & a {
-    text-decoration: none;
-    padding: 1rem 2rem;
-    border-radius: 0.5rem;
-    background-color: var(--this-bg);
-    color: var(--this-fg);
-    box-shadow: 0 0.5rem 1rem var(--primary-shadow-color);
-    &:hover,
-    &:focus-visible {
-      background-color: var(--this-bg-hover);
-      color: var(--this-fg-hover);
-      box-shadow: 0 0rem 5rem var(--primary-shadow-color-hovered);
-    }
+
+  &::selection {
+    background-color: var(--primary-o-color);
+    color: var(--light-o);
   }
+}
+.link {
+  height: fit-content;
+  width: fit-content;
+}
+a {
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  background-color: var(--this-bg);
+  color: var(--this-fg);
+  box-shadow: 0 0.5rem 1rem var(--primary-shadow-color);
+  &:hover,
+  &:focus-visible {
+    background-color: var(--this-bg-hover);
+    color: var(--this-fg-hover);
+    box-shadow: 0 0rem 5rem var(--primary-shadow-color-hovered);
+  }
+}
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: fit-content;
+  width: 100%;
+  padding: 1rem;
+  z-index: 1000;
+
+  & .indicator {
+    position: relative;
+    height: 10px;
+    width: 0%;
+    border-radius: 1rem;
+    background-color: var(--primary-o-color);
+    box-shadow: 0 0 1rem var(--primary-o-color);
+    animation: animte-scroll-indicator linear;
+    animation-range: entry 0% cover 100%;
+    animation-timeline: scroll();
+  }
+}
+@keyframes animte-scroll-indicator {
+  100% {
+    width: 100%;
+  }
+}

@@ -249,6 +249,9 @@ export default function Home() {
   ];
   return (
     <main className="home-page">
+      <div className="scroll-indicator">
+        <div className="indicator"></div>
+      </div>
       {Sections.map((section, index) => (
         <section key={index} className={section.className}>
           {section.wrapper}
