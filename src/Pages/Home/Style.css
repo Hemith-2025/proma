@@ -315,3 +315,8 @@ main.home-page {
     scale: 1;
   }
 }
+@keyframes animte-scroll-indicator {
+  100% {
+    width: 100%;
+  }
+}

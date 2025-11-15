@@ -159,8 +159,3 @@ a {
     animation-timeline: scroll();
   }
 }
-@keyframes animte-scroll-indicator {
-  100% {
-    width: 100%;
-  }
-}
