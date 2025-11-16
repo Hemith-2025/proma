@@ -7,6 +7,7 @@ import Content from "../../Data/Content";
 // Components
 import UseWrapper from "../../Components/Common/UseWrapper";
 import TutorialSection from "../../Components/Common/TutorialSection";
+import ScrollIndicator from "../../Components/Common/ScrollIndicator";
 
 // Dependencies
 import gsap from "gsap";
@@ -129,6 +130,7 @@ export default function Tutorial() {
   ];
   return (
     <main className="tutorial-page">
+      <ScrollIndicator />
       {Sections.map((section, index) => (
         <section key={index} className={section.className}>
           {section.wrapper}
