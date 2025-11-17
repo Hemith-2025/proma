@@ -147,6 +147,27 @@ export default function Home() {
         },
       }
     );
+    gsap.fromTo(
+      gsap.utils.toArray(".feature-subtitle"),
+      {
+        y: 100,
+        opacity: 0,
+        filter: "blur(30px)",
+      },
+      {
+        y: 0,
+        opacity: 1,
+        filter: "blur(0px)",
+        stagger: 0.25,
+        scrollTrigger: {
+          trigger: ".feature-subtitle",
+          start: "top center",
+          end: "bottom center",
+          scrub: false,
+          toggleActions: "play none none reverse",
+        },
+      }
+    )
 
     return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
@@ -195,7 +216,7 @@ export default function Home() {
         </div>
         <div className="subtitles">
           {FeaturesContent.subtitles.map((subtitle, index) => (
-            <div key={index} className="subtitle">
+            <div key={index} className="subtitle feature-subtitle">
               <div className="icon">{subtitle.icon}</div>
               <div className="label">
                 <p>{subtitle.label}</p>

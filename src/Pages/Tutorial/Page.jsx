@@ -13,24 +13,43 @@ import ScrollIndicator from "../../Components/Common/ScrollIndicator";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Tutorial() {
+  useEffect(() => {
+    gsap.fromTo(
+      gsap.utils.toArray([".hero-section .wrapper .title", ".hero-section .wrapper .subtitle"]),
+      { x: -50, opacity: 0, filter: "blur(30px)" },
+      { x: 0, opacity: 1, filter: "blur(0px)", stagger: 0.5 }
+    );
+    gsap.fromTo(
+      gsap.utils.toArray(".tutorial-section .wrapper .title"),
+      { x: -50, opacity: 0 },
+      { x: 0, opacity: 1 }
+    );
+    gsap.fromTo(
+      gsap.utils.toArray(".tutorial-section .wrapper .subtitle"),
+      { y: 20, opacity: 0 },
+      { y: 0, opacity: 1 }
+    );
+    gsap.fromTo(
+      gsap.utils.toArray(".steps .wrapper .image-wrapper"),
+      { x: 200, opacity: 0, },
+      { x: 0, opacity: 1, stagger: 0.5 }
+    );
+    return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  }, []);
   function HeroSection() {
     const HeroContent = Content.pagesContents.tutorial.hero;
     return UseWrapper(
       <>
-        <div className="image-wrapper">
-          <img src={HeroContent.image.src} alt={HeroContent.image.alt} />
+        <div className="title">
+          <p>{HeroContent.title}</p>
         </div>
-        <div className="overlay">
-          <div className="title">
-            <p>{HeroContent.title}</p>
-          </div>
-          <div className="subtitle">
-            <p>{HeroContent.subtitle}</p>
-          </div>
+        <div className="subtitle">
+          <p>{HeroContent.subtitle}</p>
         </div>
       </>
     );
@@ -68,6 +87,11 @@ export default function Tutorial() {
       <TutorialSection data={Content.pagesContents.tutorial.linkEngineer} />
     );
   }
+  function UnlinkEngineerSection() {
+    return (
+      <TutorialSection data={Content.pagesContents.tutorial.unlinkEngineer} />
+    );
+  }
   function ReachUsSection() {
     const ReachUsContent = Content.pagesContents.home.reachus;
     return UseWrapper(
@@ -75,17 +99,19 @@ export default function Tutorial() {
         <div className="title">
           <p>{ReachUsContent.title}</p>
         </div>
-        <div className="subtitles">
-          {ReachUsContent.subtitles.map((subtitle, index) => (
-            <div key={index} className="subtitle">
-              <p>{subtitle}</p>
-            </div>
-          ))}
-        </div>
-        <div className="link">
-          <NavLink to={ReachUsContent.link.slug}>
-            <p>{ReachUsContent.link.label}</p>
-          </NavLink>
+        <div className="copy">
+          <div className="subtitles">
+            {ReachUsContent.subtitles.map((subtitle, index) => (
+              <div key={index} className="subtitle">
+                <p>{subtitle}</p>
+              </div>
+            ))}
+          </div>
+          <div className="link">
+            <NavLink to={ReachUsContent.link.slug}>
+              {ReachUsContent.link.label}
+            </NavLink>
+          </div>
         </div>
       </>
     );
@@ -96,35 +122,39 @@ export default function Tutorial() {
       wrapper: HeroSection(),
     },
     {
-      className: "add-product-section",
+      className: "add-product-section tutorial-section",
       wrapper: AddProductSection(),
     },
     {
-      className: "upgrade-linking-section",
+      className: "upgrade-linking-section tutorial-section",
       wrapper: UpgradeLinkingSection(),
     },
     {
-      className: "upgrade-unlinking-section",
+      className: "upgrade-unlinking-section tutorial-section",
       wrapper: UpgradeUnlinkingSection(),
     },
     {
-      className: "add-customer-section",
+      className: "add-customer-section tutorial-section",
       wrapper: AddCustomerSection(),
     },
     {
-      className: "link-customer-section",
+      className: "link-customer-section tutorial-section",
       wrapper: LinkCustomerSection(),
     },
     {
-      className: "add-engineer-section",
+      className: "add-engineer-section tutorial-section",
       wrapper: AddEngineerSection(),
     },
     {
-      className: "link-engineer-section",
+      className: "link-engineer-section tutorial-section",
       wrapper: LinkEngineerSection(),
     },
     {
-      className: "reach-us-section",
+      className: "unlink-engineer-section tutorial-section",
+      wrapper: UnlinkEngineerSection(),
+    },
+    {
+      className: "reachus-section",
       wrapper: ReachUsSection(),
     },
   ];

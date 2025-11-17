@@ -57,7 +57,7 @@ function StepsWrapper({ stepsArray }) {
               <p>
                 {activeStepIndex + 1} / {stepsArray.length}
               </p>
-              <button onClick={(e) => setIsAutoPlay((prevState) => !prevState)}>
+              <button className={(isAutoPlay) ? "play" : ""} onClick={(e) => setIsAutoPlay((prevState) => !prevState)}>
                 <div className="play">
                   <Play />
                 </div>

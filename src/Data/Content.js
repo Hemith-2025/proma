@@ -2,7 +2,6 @@ import {
   Zap,
   ChartLine,
   Lightbulb,
-  SunMoon,
   UserCheck,
   Lock,
   MousePointer,
@@ -335,11 +334,10 @@ const Content = {
           "A simple and powerful web application that allows you to manage products and upgrades.",
           "Built with ❤️ Specially for Product Managers.",
           "Efficient Tracking and Management of your Products and their Upgrades.",
-          "Glassmorphism UI with a touch of glow for a modern and sleek look.",
-          "Navigate seamlessly between Products and Upgrades with ease.",
+          "Glowish UI with a touch of glow for a modern and sleek look.",
+          "Navigate seamlessly with ease.",
           "Intuitive User Interface for a smooth and hassle-free experience.",
-          "Bored of Light? Try the Dark Mode for a more immersive experience.",
-          "No account required! Just start managing your products and upgrades now.",
+          "No account required! Just start managing your products now.",
           "Your data is completely secure and stored through local storage.",
           "Only you have access to your data, so you can trust us with confidence.",
           "Ready to Start? Check out the Tutorial and get started now!",
@@ -363,10 +361,6 @@ const Content = {
           {
             icon: <Lightbulb />,
             label: "Intuitive User Interface",
-          },
-          {
-            icon: <SunMoon />,
-            label: "Light and Dark Modes",
           },
           {
             icon: <UserCheck />,
@@ -510,7 +504,7 @@ const Content = {
           },
           {
             stepNumber: 4,
-            stepLabel: `Click o "Yes, Proceed" to unlink the Upgrade.`,
+            stepLabel: `Click on "Yes, Proceed" to unlink the Upgrade.`,
             image: {
               src: null,
               alt: "Upgrade Unlinking Step 4",
@@ -663,6 +657,30 @@ const Content = {
         ],
         conclusion:
           "You have successfully linked an Engineer to a Product in your Inventory.",
+      },
+      unlinkEngineer: {
+        title: "Unlinking an Engineer",
+        subtitle: "Now let's unlink an Engineer from the Product.",
+        steps: [
+          {
+            stepNumber: 1,
+            stepLabel: `Select the Product you want to unlink the Engineer from.`,
+            image: {
+              src: null,
+              alt: "Unlink Engineer Step 1",
+            },
+          },
+          {
+            stepNumber: 2,
+            stepLabel: `Click on "Unlink an Engineer" to unlink the Engineer from the Product.`,
+            image: {
+              src: null,
+              alt: "Unlink Engineer Step 2",
+            },
+          },
+        ],
+        conclusion:
+          "You have successfully unlinked an Engineer from a Product in your Inventory.",
       },
       reachus: {
         title: "Say Hello!",

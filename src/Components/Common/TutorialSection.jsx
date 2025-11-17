@@ -4,7 +4,6 @@ import StepsWrapper from "./StepsWrapper";
 function TutorialSection({ data }) {
   return UseWrapper(
     <>
-      <div className="copy">
         <div className="title">
           <p>{data.title}</p>
         </div>
@@ -15,7 +14,6 @@ function TutorialSection({ data }) {
         <div className="conclusion">
           <p>Conclusion: {data.conclusion}</p>
         </div>
-      </div>
     </>
   );
 }
