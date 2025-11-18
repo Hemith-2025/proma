@@ -324,8 +324,10 @@ main.home-page {
             width: fit-content;
 
             & .subtitle {
+              height: fit-content;
+              width: 100%;
               font-size: 1.5rem;
-              
+
               @media (max-width: 900px) {
                 text-align: center;
                 font-size: 1rem;
@@ -339,6 +341,7 @@ main.home-page {
               --this-fg: var(--primary-o-color);
               --this-bg-hover: var(--primary-o-color);
               --this-fg-hover: var(--primary-l-color);
+              transition: all var(--speed-normal);
             }
           }
         }

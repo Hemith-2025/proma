@@ -7,7 +7,6 @@ import Content from "../../Data/Content";
 // Components
 import UseWrapper from "../../Components/Common/UseWrapper";
 import TutorialSection from "../../Components/Common/TutorialSection";
-import ScrollIndicator from "../../Components/Common/ScrollIndicator";
 
 // Dependencies
 import gsap from "gsap";
@@ -34,11 +33,19 @@ export default function Tutorial() {
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1 }
     );
-    gsap.fromTo(
-      gsap.utils.toArray(".steps .wrapper .image-wrapper"),
-      { x: 200, opacity: 0, },
-      { x: 0, opacity: 1, stagger: 0.5 }
-    );
+    if (window.innerWidth > 900) {
+      gsap.fromTo(
+        gsap.utils.toArray(".steps .wrapper .image-wrapper"),
+        { x: 200, opacity: 0, },
+        { x: 0, opacity: 1, stagger: 0.5 }
+      );
+    } else {
+      gsap.fromTo(
+        gsap.utils.toArray(".steps .wrapper .image-wrapper"),
+        { y: 200, opacity: 0, },
+        { y: 0, opacity: 1, stagger: 0.5 }
+      );
+    }
     return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
   }, []);
   function HeroSection() {
@@ -160,7 +167,6 @@ export default function Tutorial() {
   ];
   return (
     <main className="tutorial-page">
-      <ScrollIndicator />
       {Sections.map((section, index) => (
         <section key={index} className={section.className}>
           {section.wrapper}

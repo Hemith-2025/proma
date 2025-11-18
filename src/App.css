@@ -96,26 +96,37 @@ body {
   background-color: var(--dark-o);
   color: var(--light-o);
 
-  &::-webkit-scrollbar {
-    height: 14px;
-    width: 14px;
-    background-color: var(--bg);
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: var(--primary-value);
-  }
-
   &::selection {
     background-color: var(--primary-o-color);
     color: var(--light-o);
   }
+
+  &::-webkit-scrollbar-track-piece {
+    margin: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  height: 14px;
+  width: 14px;
+  background-color: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-o-color);
+  border-radius: 1rem;
+  border: 0.2rem solid var(--dark-o);
+}
+
+::-webkit-scrollbar-track-piece {
+  margin: 1rem;
 }
 .link {
   height: fit-content;
   width: fit-content;
 }
-a {
+a,
+button {
   text-decoration: none;
   font-weight: 600;
   padding: 1rem 2rem;

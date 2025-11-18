@@ -697,24 +697,45 @@ const Content = {
     },
     contact: {
       hero: {
-        title: "Want to Know More",
-        subtitle: "Leave a Message and We'll Get Back to You",
-        image: {
-          src: null,
-          alt: "Contact Hero Section Background Image",
-        },
+        title: "Want to Know More?",
+        subtitle: "Leave a Message and We'll Get Back to You"
       },
       info: {
         title: "Contact Information",
         subtitles: [
           "If you have any questions or feedback, please don't hesitate to contact us.",
           "We're here to help you with anything you need.",
-          "Contact us now to get started!",
         ],
-        link: {
-          label: "Contact Us",
-          slug: "/contact",
-        },
+        details: [
+          {
+            title: "Our Headquarters",
+            labels: ["Bengaluru", "Hyderabad", "New Delhi"],
+          },
+          {
+            title: "Email",
+            labels: ["support@proma.com"],
+          },
+          {
+            title: "Contact.no",
+            labels: ["+91 1234567890", "+91 2468013579"],
+          },
+          {
+            title: "We are available at",
+            labels: [
+              "Ahmedabad",
+              "Bengaluru",
+              "Bhubaneshwar",
+              "Chennai",
+              "Gurugram",
+              "Hyderabad",
+              "Kolkata",
+              "Mumbai",
+              "Noida",
+              "Rajahmundry",
+            ],
+          },
+        ],
+
       },
     },
   },

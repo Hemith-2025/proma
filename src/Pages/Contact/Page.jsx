@@ -12,17 +12,21 @@ import ContactForm from "../../Components/Common/ContactForm";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { NavLink } from "react-router-dom";
+import { useEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Contact() {
+  useEffect(() => {
+    return () => ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+  }, []);
+  useEffect(() => {
+    document.documentElement.style.setProperty("--contact-page-hero-section-height", document.querySelector("main.contact-page section.hero-section").offsetHeight);
+  },[window.innerWidth,window.onresize]);
   function HeroSection() {
     const HeroContent = Content.pagesContents.contact.hero;
     return UseWrapper(
       <>
-        <div className="image-wrapper">
-          <img src={HeroContent.image.src} alt={HeroContent.image.alt} />
-        </div>
         <div className="overlay">
           <div className="title">
             <p>{HeroContent.title}</p>
@@ -34,47 +38,55 @@ export default function Contact() {
       </>
     );
   }
-  function InfoSection() {
+  function InfoFormSection() {
     const InfoContent = Content.pagesContents.contact.info;
     return UseWrapper(
       <>
-        <div className="title">
-          <p>{InfoContent.title}</p>
-        </div>
-        <div className="subtitles">
-          {InfoContent.subtitles.map((subtitle, index) => (
-            <div key={index} className="subtitle">
-              <p>{subtitle}</p>
+        <div className="info">
+          <div className="decor"></div>
+          <div className="copy">
+            <div className="title">
+              <p>{InfoContent.title}</p>
             </div>
-          ))}
+            <div className="subtitles">
+              {InfoContent.subtitles.map((subtitle, index) => (
+                <div key={index} className="subtitle">
+                  <p>{subtitle}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="details">
+            {InfoContent.details.map((detail, index) => (
+              <div key={index} className="detail">
+                <div className="title">
+                  <p>{detail.title}</p>
+                </div>
+                <div className="labels">
+                  {detail.labels.map((label, index) => (
+                    <div key={index} className="label">
+                      <p>{label}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
-        <div className="link">
-          <NavLink to={InfoContent.link.slug}>
-            <p>{InfoContent.link.label}</p>
-          </NavLink>
+        <div className="form">
+          <ContactForm />
         </div>
       </>
     );
   }
-  function FormSection(){
-    return UseWrapper(
-        <>
-            <ContactForm />
-        </>
-    )
-  }
   const Sections = [
     {
-      className: "Hero-section",
+      className: "hero-section",
       wrapper: HeroSection(),
     },
     {
-      className: "Info-section",
-      wrapper: InfoSection(),
-    },
-    {
-      className: "Form-section",
-      wrapper: FormSection(),
+      className: "info-form-section",
+      wrapper: InfoFormSection(),
     },
   ];
   return (

@@ -5,6 +5,7 @@ import './App.css';
 import Pages from "./Data/Pages";
 
 // Components
+import ScrollIndicator from './Components/Common/ScrollIndicator';
 
 // Dependencies
 import { Routes, Route, useLocation } from 'react-router-dom';
@@ -14,6 +15,7 @@ function App() {
   const location = useLocation();
   return (
     <>
+    <ScrollIndicator />
       <Routes key={location.pathname} location={location}>
         {Pages.map((page, index) => (
           <Route key={index} path={page.slug} element={page.component} />

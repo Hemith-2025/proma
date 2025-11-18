@@ -269,8 +269,8 @@ main.tutorial-page {
         & .conclusion {
           padding: 1rem;
           font-size: 1.2rem;
-          background-color: var(--primary-d-color);
-          color: var(--fg);
+          background-color: var(--primary-l-color);
+          color: var(--primary-d-color);
           border-radius: 1rem;
           margin-top: 1rem;
 
@@ -334,6 +334,8 @@ main.tutorial-page {
             width: fit-content;
 
             & .subtitle {
+              height: fit-content;
+              width: 100%;
               font-size: 1.5rem;
 
               @media (max-width: 900px) {
