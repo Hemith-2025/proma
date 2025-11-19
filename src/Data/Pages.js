@@ -1,6 +1,9 @@
+// Pages
 import Home from "../Pages/Home/Page";
 import Tutorial from "../Pages/Tutorial/Page";
 import Contact from "../Pages/Contact/Page";
+// Forms
+import AddProduct from "../Pages/AddProduct/Page";
 
 const Pages = [
     {
@@ -20,4 +23,12 @@ const Pages = [
     }
 ];
 
-export default Pages;
+const Forms = [
+    {
+        title: "Add Product",
+        slug: "/add-product",
+        component: <AddProduct />
+    }
+]
+
+export { Pages, Forms };

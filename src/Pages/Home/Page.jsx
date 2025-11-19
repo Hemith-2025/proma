@@ -147,6 +147,27 @@ export default function Home() {
       }
     );
     gsap.fromTo(
+      ".features-section .wrapper .title",
+      {
+        y: 100,
+        opacity: 0,
+        filter: "blur(30px)",
+      },
+      {
+        y: 0,
+        opacity: 1,
+        filter: "blur(0px)",
+        stagger: 0.25,
+        scrollTrigger: {
+          trigger: ".feature-subtitle",
+          start: "top center",
+          end: "bottom center",
+          scrub: false,
+          toggleActions: "play none none reverse",
+        },
+      }
+    )
+    gsap.fromTo(
       gsap.utils.toArray(".feature-subtitle"),
       {
         y: 100,
